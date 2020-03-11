@@ -9,9 +9,20 @@ class CellData:
     def __init__(self, rows: int, cols: int):
         self.rows = rows
         self.cols = cols
+        self.clear()
+
+    def clear(self):
+        data2 = []
         for row in range(0, self.rows):
-            self.data.append([(randint(0, 9) <= 2)
-                              for col in range(0, self.cols)])
+            data2.append([False for col in range(0, self.cols)])
+        self.data = data2
+
+    def create(self):
+        data2 = []
+        for row in range(0, self.rows):
+            data2.append([(randint(0, 9) <= 2)
+                          for col in range(0, self.cols)])
+        self.data = data2
 
     def count_livingcells_around(self, row: int, col: int):
         # 周囲の生存セルを数える
