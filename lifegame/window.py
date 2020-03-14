@@ -11,6 +11,9 @@ class Window:
         self.cv = Canvas(self.win, width=600, height=400)
         self.cv.pack()
 
+        reset_btn = Button(self.win, text='リセット', command=self.reset)
+        reset_btn.pack()
+
         self.game_loop()
         self.win.mainloop()
 
@@ -24,6 +27,9 @@ class Window:
                 x, y = [col * Const.CELL_SIZE, row * Const.CELL_SIZE]
                 self.cv.create_oval(
                     x, y, x + Const.CELL_SIZE, y + Const.CELL_SIZE, fill="red", width=0)
+
+    def reset(self):
+        self.cell_data.create()
 
     def game_loop(self):
         self.cell_data.next_turn()
